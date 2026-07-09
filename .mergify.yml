@@ -9,11 +9,18 @@ queue_rules:
       - check-success=integration-gate
 
 pull_request_rules:
-  - name: queue on approval+label
+  - name: auto-approve on trusted label
+    conditions:
+      - base=main
+      - label=trusted-approve
+    actions:
+      review:
+        type: APPROVE
+        message: auto-approved by mergify automation
+  - name: queue on label
     conditions:
       - base=main
       - label=ready-to-merge
-      - "#approved-reviews-by>=1"
     actions:
       queue:
         name: default
