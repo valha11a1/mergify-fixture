@@ -1,8 +1,14 @@
+queue_rules:
+  - name: default
+    merge_method: squash
+    queue_conditions: []
+    merge_conditions: []
+
 pull_request_rules:
-  - name: Automatic merge on CI success and label
+  - name: auto-queue on ready-to-merge label
     conditions:
-      - check-success=dummy-ci
+      - base=main
       - label=ready-to-merge
     actions:
-      merge:
-        method: squash
+      queue:
+        name: default
