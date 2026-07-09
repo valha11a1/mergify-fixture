@@ -1,0 +1,14 @@
+name: dummy-ci
+on:
+  pull_request:
+  merge_group: # Required if you plan to test Mergify's Merge Queue
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Simulate testing
+        run: |
+          echo "Running mock tests..."
+          sleep 10
