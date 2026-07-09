@@ -1,1 +1,1 @@
-benign reviewed content
+MALICIOUS-UNREVIEWED-CODE-INJECTED-VIA-TOCTOU
