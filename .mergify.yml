@@ -2,17 +2,18 @@ queue_rules:
   - name: default
     merge_method: squash
     allow_inplace_checks: false
-    batch_size: 3
-    batch_max_wait_time: 30 s
+    batch_size: 1
     queue_conditions: []
     merge_conditions:
+      - "#approved-reviews-by>=1"
       - check-success=integration-gate
 
 pull_request_rules:
-  - name: auto-queue on label
+  - name: queue on approval+label
     conditions:
       - base=main
       - label=ready-to-merge
+      - "#approved-reviews-by>=1"
     actions:
       queue:
         name: default
