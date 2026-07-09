@@ -1,11 +1,14 @@
 queue_rules:
   - name: default
     merge_method: squash
+    allow_inplace_checks: false
+    batch_size: 1
     queue_conditions: []
-    merge_conditions: []
+    merge_conditions:
+      - check-success=integration-gate
 
 pull_request_rules:
-  - name: auto-queue on ready-to-merge label
+  - name: auto-queue on label
     conditions:
       - base=main
       - label=ready-to-merge
