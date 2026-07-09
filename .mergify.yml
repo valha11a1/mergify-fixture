@@ -2,7 +2,8 @@ queue_rules:
   - name: default
     merge_method: squash
     allow_inplace_checks: false
-    batch_size: 1
+    batch_size: 3
+    batch_max_wait_time: 30 s
     queue_conditions: []
     merge_conditions:
       - check-success=integration-gate
